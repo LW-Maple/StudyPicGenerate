@@ -109,7 +109,7 @@ public class Main {
         //3.获取完成页面图片的url
         Elements select = document.select("body > div.item > div > ul > li:nth-child(1) > a");
         String href = select.attr("href");
-        String realUrl=href.replaceAll("m.html","images/end.jpg");
+        String realUrl=href.replace("m.html","images/end.jpg");
         return realUrl;
     }
 
