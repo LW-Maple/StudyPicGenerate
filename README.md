@@ -6,7 +6,7 @@
 
 1. 需要java运行环境，自行安装
 
-2. [下载](https://github.com/LW-Maple/StudyPicGenerate/releases/download/v1/target.zip)zip文件并解压
+2. [下载](https://github.com/LW-Maple/StudyPicGenerate/releases/download/v2/target.zip)zip文件并解压
 
 3. 修改data.json
 
