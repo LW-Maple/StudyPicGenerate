@@ -73,6 +73,8 @@ public class Main {
         if (!file.exists()){
             file.mkdir();
         }
+
+
     }
     /**
      * 获取最新一期的大学习图片地址
@@ -109,7 +111,7 @@ public class Main {
         //3.获取完成页面图片的url
         Elements select = document.select("body > div.item > div > ul > li:nth-child(1) > a");
         String href = select.attr("href");
-        String realUrl=href.replaceAll("m.html","images/end.jpg");
+        String realUrl=href.replace("m.html","images/end.jpg");
         return realUrl;
     }
 
@@ -125,14 +127,16 @@ public class Main {
      * 批量生成图片
      */
     public static void generateImgs(){
+        Integer posX = Integer.valueOf(jsonMap.get("PosX").toString());
+        Integer posY = Integer.valueOf(jsonMap.get("PosY").toString());
         String srcImgPath=local+"\\end.jpg";    //源图片地址
         String tarImgPathTmp=local+"\\images";   //目标图片的地址
         String classname=jsonMap.get("classname").toString();
         List<String> usernames=JSON.parseArray(jsonMap.get("usernames").toString(), String.class);
 
         ArrayList<ImageDTO> list = new ArrayList<ImageDTO>();
-        list.add(WaterMarkUtils.createImageDTO(classname,new Color(255,59,48),new Font("微软雅黑", Font.PLAIN, 48), 335, 572));
-        list.add(WaterMarkUtils.createImageDTO("",new Color(255,59,48),new Font("微软雅黑", Font.PLAIN, 48), 335, 620));
+        list.add(WaterMarkUtils.createImageDTO(classname,new Color(255,59,48),new Font("微软雅黑", Font.PLAIN, 48), posX, posY));
+        list.add(WaterMarkUtils.createImageDTO("",new Color(255,59,48),new Font("微软雅黑", Font.PLAIN, 48), posX, posY+60));
         //批量绘制图片
         for (int i = 0; i < usernames.size() ; i++) {
             list.get(1).setText(usernames.get(i));
